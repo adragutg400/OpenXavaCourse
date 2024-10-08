@@ -37,4 +37,7 @@ public class Factura {
 	
 	@TextArea
 	String observaciones;
+	
+	@ManyToOne(fetch=FetchType.LAZY, optional=false)
+	Cliente cliente;
 }
