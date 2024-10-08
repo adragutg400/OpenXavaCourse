@@ -1,6 +1,8 @@
 /*C4*/SET SCHEMA PUBLIC
 DISCONNECT
 /*C5*/SET SCHEMA PUBLIC
-create table Categoria (oid varchar(32) not null, description varchar(50), primary key (oid))
-INSERT INTO CATEGORIA VALUES('402881ee926b4d8601926b4de75c0000','Software')
+alter table Producto add column fotos varchar(32)
+alter table Producto add column observaciones varchar(255)
+alter table Producto add column precio numeric(19,2)
+INSERT INTO PRODUCTO VALUES(2,'Escritorio','402881ee926b619601926b62f03d0000','6B70A754C0A8016E000000004BE90A1F','Este es un ejemplo de escritorio',150.00)
 COMMIT
