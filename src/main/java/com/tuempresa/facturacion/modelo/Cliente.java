@@ -17,5 +17,8 @@ public class Cliente {
 	@Column(length=60)
 	@Required
 	String nombre;
+	
+	@Embedded @NoFrame
+	Direccion direccion;
 
 }
