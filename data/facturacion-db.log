@@ -1,12 +1,2 @@
 /*C3*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C4*/SET SCHEMA PUBLIC
-create table Autor (oid varchar(32) not null, nombre varchar(50), primary key (oid))
-alter table Producto add column autor_oid varchar(32)
-alter table Producto add constraint FKmtkejrnklbkimttu99b9jqufw foreign key (autor_oid) references Autor
-INSERT INTO CATEGORIA VALUES('402881ee926bb5c801926bb70ce50000','Libros')
-COMMIT
-INSERT INTO AUTOR VALUES('402881ee926bb5c801926bb73fe00001','Juanito Perez')
-COMMIT
-INSERT INTO PRODUCTO VALUES(3,'Aprender OpenXava','402881ee926bb5c801926bb70ce50000',NULL,'',NULL,'402881ee926bb5c801926bb73fe00001')
-COMMIT
