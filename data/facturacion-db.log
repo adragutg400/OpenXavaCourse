@@ -1,6 +1,8 @@
-/*C4*/SET SCHEMA PUBLIC
+/*C2*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C5*/SET SCHEMA PUBLIC
-DELETE FROM CLIENTE WHERE NUMERO=1232
-INSERT INTO CLIENTE VALUES(1232,'Prueba',12345,'Prueba','Prueba','Prueba')
+/*C3*/SET SCHEMA PUBLIC
+create table Factura (oid varchar(32) not null, anyo integer, fecha date, numero integer, observaciones varchar(255), primary key (oid))
+INSERT INTO FACTURA VALUES('402881ee926b8d5d01926b8dd33c0000',2024,'2024-10-08',1,'Prueba 1\u000a')
+COMMIT
+INSERT INTO FACTURA VALUES('402881ee926b8d5d01926b8e0d750001',2024,'2024-10-08',2,'Prueba 2')
 COMMIT
