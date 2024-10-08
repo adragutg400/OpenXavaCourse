@@ -13,7 +13,12 @@ import com.tuempresa.facturacion.calculadores.*;
 import lombok.*;
 
 @Entity @Getter @Setter
-@View(members="anyo, numero, fecha;datos {cliente;detalles;observaciones}")
+@View(members="anyo, numero, fecha;"
+		+ "datos{"
+		+ "cliente;"
+		+ "detalles;"
+		+ "observaciones"
+		+ "}")
 abstract public class DocumentoComercial extends Identificable{
 	
 	@Column(length=4)
@@ -33,7 +38,7 @@ abstract public class DocumentoComercial extends Identificable{
 	Cliente cliente;
 	
 	@ElementCollection
-	@ListProperties("producto.numero, producto.descripcion, cantidad, importe")
+	@ListProperties("producto.numero, producto.descripcion, cantidad, precioPorUnidad, importe")
 	Collection<Detalle> detalles;
 	
 	@TextArea
