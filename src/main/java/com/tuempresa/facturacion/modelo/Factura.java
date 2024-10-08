@@ -4,9 +4,7 @@ import java.time.*;
 import java.util.*;
 
 import javax.persistence.*;
-import javax.persistence.Entity;
 
-import org.hibernate.annotations.*;
 import org.openxava.annotations.*;
 import org.openxava.calculators.*;
 
@@ -16,14 +14,7 @@ import lombok.*;
 
 @Entity @Getter @Setter
 @View(members="anyo, numero, fecha;cliente;detalles;observaciones")
-public class Factura {
-
-	@Id
-	@Hidden
-	@GeneratedValue(generator="system-uuid")
-	@GenericGenerator(name="system-uuid", strategy="uuid")
-	@Column(length=32)
-	String oid;
+public class Factura extends Identificable{
 	
 	@Column(length=4)
 	@DefaultValueCalculator(CurrentYearCalculator.class)
