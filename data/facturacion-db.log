@@ -1,7 +1,2 @@
-/*C4*/SET SCHEMA PUBLIC
+/*C3*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C5*/SET SCHEMA PUBLIC
-alter table Factura add column cliente_numero integer not null
-alter table Factura add constraint FKmd10sg74xw8mq3d2m9k2kxual foreign key (cliente_numero) references Cliente
-INSERT INTO FACTURA VALUES('402881ee926b92fd01926b93e5550000',2024,'2024-10-08',1,'Nueva factura de prueba',22)
-COMMIT

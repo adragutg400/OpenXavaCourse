@@ -1,6 +1,7 @@
 package com.tuempresa.facturacion.modelo;
 
 import java.time.*;
+import java.util.*;
 
 import javax.persistence.*;
 import javax.persistence.Entity;
@@ -40,4 +41,8 @@ public class Factura {
 	
 	@ManyToOne(fetch=FetchType.LAZY, optional=false)
 	Cliente cliente;
+	
+	@ElementCollection
+	@ListProperties("producto.numero, producto.descripcion, cantidad")
+	Collection<Detalle> detalles;
 }
