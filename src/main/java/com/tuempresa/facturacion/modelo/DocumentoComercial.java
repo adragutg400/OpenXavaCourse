@@ -13,7 +13,7 @@ import com.tuempresa.facturacion.calculadores.*;
 import lombok.*;
 
 @Entity @Getter @Setter
-@View(members="anyo, numero, fecha;cliente;detalles;observaciones")
+@View(members="anyo, numero, fecha;datos {cliente;detalles;observaciones}")
 abstract public class DocumentoComercial extends Identificable{
 	
 	@Column(length=4)
@@ -28,9 +28,6 @@ abstract public class DocumentoComercial extends Identificable{
 	@DefaultValueCalculator(CurrentLocalDateCalculator.class)
 	LocalDate fecha;
 	
-	@TextArea
-	String observaciones;
-	
 	@ManyToOne(fetch=FetchType.LAZY, optional=false)
 	@ReferenceView("Simple")
 	Cliente cliente;
@@ -38,4 +35,7 @@ abstract public class DocumentoComercial extends Identificable{
 	@ElementCollection
 	@ListProperties("producto.numero, producto.descripcion, cantidad")
 	Collection<Detalle> detalles;
+	
+	@TextArea
+	String observaciones;
 }
