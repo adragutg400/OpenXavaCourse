@@ -9,8 +9,16 @@ import org.openxava.annotations.*;
 import lombok.*;
 
 @Entity @Getter @Setter
-@View(extendsView="super.DEFAULT", members="diasEntregaEstimados, factura {factura}")
+@View(extendsView="super.DEFAULT", members="diasEntregaEstimados, entregado, factura {factura}")
 @View(name="SinClienteNiFactura", members="anyo, numero, fecha; detalles; observaciones")
+@EntityValidator(
+	value=com.tuempresa.facturacion.validadores.ValidadorEntregadoParaEstarEnFactura.class,
+	properties= {
+			@PropertyValue(name="anyo"),
+			@PropertyValue(name="numero"),
+			@PropertyValue(name="factura"),
+			@PropertyValue(name="entregado")
+	})
 public class Pedido extends DocumentoComercial{
 	
 	@ManyToOne
@@ -35,4 +43,7 @@ public class Pedido extends DocumentoComercial{
 	private void recalcularDiasEntrega() {
 		setDiasEntrega(getDiasEntregaEstimados());
 	}
+	
+	@Column(columnDefinition="BOOLEAN DEFAULT FALSE")
+	boolean entregado;
 }
