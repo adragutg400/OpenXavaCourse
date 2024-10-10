@@ -56,4 +56,9 @@ public class Pedido extends DocumentoComercial{
 							"no_puede_borrar_pedido_con_factura"));
 		}
 	}
+	
+	public void setEliminado(boolean eliminado) {
+		if(eliminado) validarPreBorrar();
+		super.setEliminado(eliminado);
+	}
 }

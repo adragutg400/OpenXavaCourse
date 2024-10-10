@@ -16,9 +16,5 @@ public class Factura extends DocumentoComercial{
 	@OneToMany(mappedBy="factura")
 	@CollectionView("SinClienteNiFactura")
 	private Collection<Pedido> pedidos;
-	
-	@Hidden
-	@Column(columnDefinition="BOOLEAN DEFAULT FALSE")
-	boolean eliminado;
 
 }
