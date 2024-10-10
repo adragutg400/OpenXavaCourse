@@ -39,7 +39,7 @@ public class Producto {
 	Autor autor;
 	
 	@Column(length=13) 
-	@ISBN
+	@ISBN(buscar=false)
 	String isbn;
 
 }
