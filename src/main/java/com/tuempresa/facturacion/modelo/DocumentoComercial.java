@@ -9,6 +9,7 @@ import javax.validation.constraints.*;
 
 import org.openxava.annotations.*;
 import org.openxava.calculators.*;
+import org.openxava.jpa.*;
 
 import com.tuempresa.facturacion.calculadores.*;
 
@@ -29,7 +30,7 @@ abstract public class DocumentoComercial extends Identificable{
 	int anyo;
 	
 	@Column(length=6)
-	@DefaultValueCalculator(value=CalculadorSiguienteNumeroParaAnyo.class, properties=@PropertyValue(name="anyo"))
+	@ReadOnly
 	int numero;
 	
 	@Required
@@ -66,4 +67,15 @@ abstract public class DocumentoComercial extends Identificable{
 	@Money
 	@Calculation("sum(detalles.importe) + iva")
 	BigDecimal importeTotal;
+	
+	@PrePersist
+	private void calcularNumero() {
+		Query query = XPersistence.getManager().createQuery(
+				"select max(f.numero) from " +
+				getClass().getSimpleName() +
+				" f where f.anyo = :anyo");
+		query.setParameter("anyo", anyo);
+		Integer ultimoNumero = (Integer) query.getSingleResult();
+		this.numero = ultimoNumero == null ? 1: ultimoNumero + 1;
+	}
 }
