@@ -38,6 +38,25 @@
     			oculta="true"
     			clase="com.tuempresa.facturacion.acciones.BuscarExcluyendoEliminados" />
     
+    	<accion nombre="deleteSelected" modo="list" confirmar="true"
+    		procesar-elementos-seleccionados="true"
+    		icono="delete"
+    		clase="com.tuempresa.facturacion.acciones.EliminarSeleccionadoParaFacturacion"
+    		atajo-de-teclado="Control D"/>
+    		
+    	<accion nombre="deleteRow" modo="NONE" confirmar="true"
+    		clase="com.tuempresa.facturacion.acciones.EliminarSeleccionadoParaFacturacion"
+    		icono="delete"
+    		en-cada-fila="true"/>
+    </controlador>
+    
+    <controlador nombre="Papelera">
+    	<accion nombre="restaurar" modo="list"
+    		clase="com.tuempresa.facturacion.acciones.EliminarSeleccionadoParaFacturacion">
+    		<poner propiedad="restaurar" valor="true"/>	
+    	</accion>
+    	
+    
     </controlador>
     
 </controladores>
