@@ -12,6 +12,7 @@ import lombok.*;
 @Entity @Getter @Setter
 @View(extendsView="super.DEFAULT", members="diasEntregaEstimados, entregado, factura {factura}")
 @View(name="SinClienteNiFactura", members="anyo, numero, fecha; detalles; observaciones")
+@RemoveValidator(com.tuempresa.facturacion.validadores.ValidadorBorrarPedido.class)
 public class Pedido extends DocumentoComercial{
 	
 	@ManyToOne
