@@ -9,6 +9,12 @@ public class EliminarParaFacturacion extends ViewBaseAction{
 
 	@Override
 	public void execute() throws Exception {
+		if(!getView().getMetaModel().containsMetaPropertyView("eliminado")) {
+			executeAction("CRUD.delete");
+			return;
+		}
+		
+		
 		Map<String, Object> valores =
 				new HashMap<>();
 		valores.put("eliminado", true);

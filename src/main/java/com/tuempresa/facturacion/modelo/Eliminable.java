@@ -6,8 +6,7 @@ import org.openxava.annotations.*;
 
 import lombok.*;
 
-@MappedSuperclass
-@Getter @Setter
+@MappedSuperclass @Getter @Setter
 public class Eliminable extends Identificable{
 	
 	@Hidden
