@@ -21,12 +21,12 @@
     </controlador>
     -->
     
-    <controlador nombre="Factura">
+    <controlador nombre="Facturacion">
     	<hereda-de controlador="Typical"/>
     	
     	<accion nombre="delete"
     		modo="detail" confirmar="true"
-    		clase="com.tuempresa.facturacion.acciones.EliminarFactura"
+    		clase="com.tuempresa.facturacion.acciones.EliminarParaFacturacion"
     		icono="delete"
     		disponible-en-nuevo="false"
     		atajo-de-teclado="Control D" />
