@@ -32,7 +32,7 @@ public class Pedido extends DocumentoComercial{
 	@Column(columnDefinition="INTEGER DEFAULT 1")
 	int diasEntrega;
 	
-	//@PrePersist @PreUpdate
+	@PrePersist @PreUpdate
 	private void recalcularDiasEntrega() {
 		setDiasEntrega(getDiasEntregaEstimados());
 	}
@@ -40,15 +40,15 @@ public class Pedido extends DocumentoComercial{
 	@Column(columnDefinition="BOOLEAN DEFAULT FALSE")
 	boolean entregado;
 	
-	@PrePersist @PreUpdate
-	private void validar() throws Exception{
+	public void setFactura(Factura factura) {
 		if(factura != null && !isEntregado()) {
 			throw new javax.validation.ValidationException(
-					XavaResources.getString(
-							"pedido_debe_estar_entregado", 
-							getAnyo(), 
-							getNumero())
-					);
+						XavaResources.getString(
+								"pedido_debe_estar_entregado",
+								getAnyo(),
+								getNumero())
+			);
 		}
+		this.factura = factura;
 	}
 }
