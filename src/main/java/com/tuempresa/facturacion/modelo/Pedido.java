@@ -3,9 +3,9 @@ package com.tuempresa.facturacion.modelo;
 import java.time.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.*;
 
 import org.openxava.annotations.*;
-import org.openxava.util.*;
 
 import lombok.*;
 
@@ -40,15 +40,10 @@ public class Pedido extends DocumentoComercial{
 	@Column(columnDefinition="BOOLEAN DEFAULT FALSE")
 	boolean entregado;
 	
-	public void setFactura(Factura factura) {
-		if(factura != null && !isEntregado()) {
-			throw new javax.validation.ValidationException(
-						XavaResources.getString(
-								"pedido_debe_estar_entregado",
-								getAnyo(),
-								getNumero())
-			);
-		}
-		this.factura = factura;
+	@AssertTrue(
+			message="pedido_debe_estar_entregado"
+	)
+	private boolean isEntregadoParaEstarEnFactura() {
+		return factura == null || isEntregado();
 	}
 }
