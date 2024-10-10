@@ -36,5 +36,7 @@ public class Producto {
 	@DescriptionsList
 	Autor autor;
 	
+	@Column(length=13)
+	String isbn;
 
 }
