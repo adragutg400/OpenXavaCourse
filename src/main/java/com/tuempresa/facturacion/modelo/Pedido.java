@@ -98,4 +98,9 @@ public class Pedido extends DocumentoComercial{
 		factura.setIva(factura.getIva().add(getIva()));
 		factura.setImporteTotal(factura.getImporteTotal().add(getImporteTotal()));
 	}
+	
+	@AssertTrue(message="cliente_pedido_factura_coincidir")
+	private boolean isClienteFacturaCoincide() {
+		return factura == null || factura.getCliente().getNumero() == getCliente().getNumero();
+	}
 }
