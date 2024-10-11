@@ -25,6 +25,7 @@ public class Pedido extends DocumentoComercial{
 	@ManyToOne
 	@ReferenceView("SinClienteNiPedidos")
 	@OnChange(MostrarOcultarCrearFactura.class)
+	@SearchAction("Pedido.buscarFactura")
 	Factura factura;
 	
 	@Depends("fecha")
