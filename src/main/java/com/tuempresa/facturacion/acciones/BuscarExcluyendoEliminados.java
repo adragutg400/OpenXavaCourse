@@ -6,7 +6,7 @@ import javax.ejb.*;
 
 import org.openxava.actions.*;
 
-public class BuscarExcluyendoEliminados extends SearchByViewKeyAction{
+public class BuscarExcluyendoEliminados extends SearchExecutingOnChangeAction{
 	
 	private boolean esEliminable() {
 		return getView().getMetaModel().containsMetaProperty("eliminado");
