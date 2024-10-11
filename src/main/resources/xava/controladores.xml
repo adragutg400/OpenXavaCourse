@@ -73,7 +73,7 @@
     		clase="com.tuempresa.facturacion.acciones.GrabarFactura"
     		atajo-de-teclado="Control S"/>
     		
-    	<accion nombre="cerrar" 
+    	<accion nombre="volver" 
     		clase="org.openxava.actions.CancelAction"/>
     </controlador>
     

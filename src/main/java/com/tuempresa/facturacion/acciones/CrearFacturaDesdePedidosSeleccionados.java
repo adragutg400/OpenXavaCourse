@@ -16,7 +16,7 @@ public class CrearFacturaDesdePedidosSeleccionados extends TabBaseAction{
 		Factura factura = Factura.crearDesdePedidos(pedidos);
 		addMessage("factura_creada_desde_pedidos", factura, pedidos);
 		
-		showDialog();
+		showNewView();
 		getView().setModel(factura);
 		getView().setKeyEditable(false);
 		setControllers("EdicionFactura");
