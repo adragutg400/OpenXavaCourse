@@ -91,8 +91,11 @@ public class Pedido extends DocumentoComercial{
 		catch(Exception ex) {
 			throw new SystemException("imposible_crear_factura", ex);
 		}
-		
-		
+	}
 	
+	public void copiarDetallesAFactura() {
+		factura.getDetalles().addAll(getDetalles());
+		factura.setIva(factura.getIva().add(getIva()));
+		factura.setImporteTotal(factura.getImporteTotal().add(getImporteTotal()));
 	}
 }

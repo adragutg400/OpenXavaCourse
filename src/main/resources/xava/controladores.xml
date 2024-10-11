@@ -62,6 +62,19 @@
     	
     	<accion nombre="crearFactura" modo="detail"
     		clase="com.tuempresa.facturacion.acciones.CrearFacturaDesdePedido"/>
+    		
+    	<accion nombre="crearFacturaDesdePedidosSeleccionados"
+    		modo="list"
+    		clase="com.tuempresa.facturacion.acciones.CrearFacturaDesdePedidosSeleccionados"/>
+    </controlador>
+    
+    <controlador nombre="EdicionFactura">
+    	<accion nombre="grabar"
+    		clase="com.tuempresa.facturacion.acciones.GrabarFactura"
+    		atajo-de-teclado="Control S"/>
+    		
+    	<accion nombre="cerrar" 
+    		clase="org.openxava.actions.CancelAction"/>
     </controlador>
     
 </controladores>

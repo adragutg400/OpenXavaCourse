@@ -18,5 +18,22 @@ public class Factura extends DocumentoComercial{
 	@OneToMany(mappedBy="factura")
 	@CollectionView("SinClienteNiFactura")
 	private Collection<Pedido> pedidos;
-
+	
+	public static Factura crearDesdePedidos(Collection<Pedido> pedidos) throws CrearFacturaException{
+		Factura factura = null;
+		for(Pedido pedido: pedidos) {
+			if(factura == null) {
+				pedido.crearFactura();
+				factura = pedido.getFactura();
+			}
+			else {
+				pedido.setFactura(factura);
+				pedido.copiarDetallesAFactura();
+			}
+		}
+		if(factura == null) {
+			throw new CrearFacturaException("pedidos_no_especificados");
+		}
+		return factura;
+	}
 }
