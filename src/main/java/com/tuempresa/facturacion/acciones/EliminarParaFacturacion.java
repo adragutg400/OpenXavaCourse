@@ -9,12 +9,11 @@ public class EliminarParaFacturacion extends ViewBaseAction{
 
 	@Override
 	public void execute() throws Exception {
-		if(!getView().getMetaModel().containsMetaPropertyView("eliminado")) {
+		if(!getView().getMetaModel().containsMetaProperty("eliminado")) {
 			executeAction("CRUD.delete");
 			System.out.println("Se ha eliminado registro");
 			return;
 		}
-		
 		
 		Map<String, Object> valores =
 				new HashMap<>();

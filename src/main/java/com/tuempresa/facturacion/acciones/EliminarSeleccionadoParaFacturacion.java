@@ -22,7 +22,6 @@ public class EliminarSeleccionadoParaFacturacion extends TabBaseAction implement
 			return;
 		}
 		marcarEntidadesSeleccionadasComoEliminadas();
-		
 	}
 	
 	private MetaModel getMetaModel() {

@@ -9,7 +9,7 @@ import org.openxava.actions.*;
 public class BuscarExcluyendoEliminados extends SearchByViewKeyAction{
 	
 	private boolean esEliminable() {
-		return getView().getMetaModel().containsMetaPropertyView("eliminado");
+		return getView().getMetaModel().containsMetaProperty("eliminado");
 	}
 	
 	protected Map getValuesFromView() throws Exception {
