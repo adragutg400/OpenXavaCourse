@@ -9,7 +9,7 @@
 	controlador en <modulo-defecto/> 
 	-->
 	<modulo-defecto>		  
-		<controlador nombre="Typical"/>		
+		<controlador nombre="Facturacion"/>		
 	</modulo-defecto>
 	
 	<!--
@@ -19,6 +19,22 @@
 		<controlador nombre="Print"/>
 	</modulo>		
 	-->	  
+	
+	<modulo nombre="PapeleraFactura">
+		<var-entorno nombre="XAVA_LIST_ACTION"
+			valor="Papelera.restaurar"/>
+		<modelo nombre="Factura"/>
+		<tab nombre="Eliminado"/>
+		<controlador nombre="Papelera"/>
+	</modulo>
+	
+	<modulo nombre="PapeleraPedido">
+		<var-entorno nombre="XAVA_LIST_ACTION"
+			valor="Papelera.restaurar"/>
+		<modelo nombre="Pedido"/>
+		<tab nombre="Eliminado"/>
+		<controlador nombre="Papelera"/>
+	</modulo>
 		
 </aplicacion>
 

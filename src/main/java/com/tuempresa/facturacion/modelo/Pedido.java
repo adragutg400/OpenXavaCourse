@@ -13,6 +13,8 @@ import lombok.*;
 @Entity @Getter @Setter
 @View(extendsView="super.DEFAULT", members="diasEntregaEstimados, entregado, factura {factura}")
 @View(name="SinClienteNiFactura", members="anyo, numero, fecha; detalles; observaciones")
+@Tab(baseCondition="${eliminado} = false")
+@Tab(name="Eliminado", baseCondition = "${eliminado} = true")
 public class Pedido extends DocumentoComercial{
 	
 	@ManyToOne
@@ -55,5 +57,10 @@ public class Pedido extends DocumentoComercial{
 					XavaResources.getString(
 							"no_puede_borrar_pedido_con_factura"));
 		}
+	}
+	
+	public void setEliminado(boolean eliminado) {
+		if(eliminado) validarPreBorrar();
+		super.setEliminado(eliminado);
 	}
 }
