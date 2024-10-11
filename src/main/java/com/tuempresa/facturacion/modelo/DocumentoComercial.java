@@ -68,6 +68,11 @@ abstract public class DocumentoComercial extends Eliminable{
 	@Calculation("sum(detalles.importe) + iva")
 	BigDecimal importeTotal;
 	
+	@org.hibernate.annotations.Formula("IMPORTETOTAL * 0.10")
+	@Setter(AccessLevel.NONE)
+	@Money
+	BigDecimal beneficioEstimado;
+	
 	@PrePersist
 	private void calcularNumero() {
 		Query query = XPersistence.getManager().createQuery(
@@ -79,8 +84,7 @@ abstract public class DocumentoComercial extends Eliminable{
 		this.numero = ultimoNumero == null ? 1: ultimoNumero + 1;
 	}
 	
-	@org.hibernate.annotations.Formula("IMPORTETOTAL * 0.10")
-	@Setter(AccessLevel.NONE)
-	@Money
-	BigDecimal beneficioEstimado;
+	public String toString() {
+		return anyo + "/" + numero;
+	}
 }
