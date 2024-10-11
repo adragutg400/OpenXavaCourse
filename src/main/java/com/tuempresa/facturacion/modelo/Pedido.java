@@ -25,6 +25,8 @@ public class Pedido extends DocumentoComercial{
 	@ManyToOne
 	@ReferenceView("SinClienteNiPedidos")
 	@OnChange(MostrarOcultarCrearFactura.class)
+	@OnChangeSearch(BuscarAlCambiarFactura.class)
+	@SearchAction("Pedido.buscarFactura")
 	Factura factura;
 	
 	@Depends("fecha")
@@ -97,5 +99,10 @@ public class Pedido extends DocumentoComercial{
 		factura.getDetalles().addAll(getDetalles());
 		factura.setIva(factura.getIva().add(getIva()));
 		factura.setImporteTotal(factura.getImporteTotal().add(getImporteTotal()));
+	}
+	
+	@AssertTrue(message="cliente_pedido_factura_coincidir")
+	private boolean isClienteFacturaCoincide() {
+		return factura == null || factura.getCliente().getNumero() == getCliente().getNumero();
 	}
 }
